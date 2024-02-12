@@ -1,0 +1,118 @@
+%\iffalse
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+\usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+\title{\textbf{IN-2023}}
+\author{EE23BTECH11210-Dhyana Teja Machineni$^{*}$% <-this % stops a space
+}
+\maketitle
+\newpage
+\bigskip
+
+\textbf{QUESTION:$44$}\\
+A continuous real-valued signal $x\brak{t}$ has finite positive energy and $x\brak{t} = 0$, $\forall$ $t < 0$. From the list given below, select ALL the signals whose
+continuous-time Fourier transform is purely imaginary.\\
+\begin{enumerate}
+\item$x\brak{t} + x\brak{-t}$
+\item$x\brak{t} - x\brak{-t}$
+\item$j\brak{x\brak{t} + x\brak{-t}}$
+\item$j\brak{x\brak{t} - x\brak{-t}}$
+\end{enumerate}
+\hfill{(GATE IN 2023)}\\
+\solution
+\begin{table}[h]
+         \label{tab:table}
+         \input{tables/table.tex}
+         \caption{Variables and their descriptions}
+     \end{table}
+$X\brak{\omega}$=$\int_{-\infty}^{\infty} x\brak{t} e^{-j \omega t} \ dt$\\
+Fourier transform of a continuous signal
+\begin{align}
+\mathcal{F}\{x(t)\} &= X\brak{\omega}\\
+   X\brak{\omega}&=\int_{-\infty}^{\infty} x\brak{t} e^{-j \omega t} \ dt\\
+\mathcal{F}\{x(-t)\} &= X\brak{-\omega }\\
+   X\brak{-\omega}&=\int_{-\infty}^{\infty} x\brak{-t} e^{j \omega t} \ dt\\
+\end{align}    
+1)$x\brak{t} + x\brak{-t}$
+\begin{align}
+   X\brak{\omega}&=\int_{-\infty}^{\infty}x\brak{t} e^{-j \omega t} \ dt\\
+   X\brak{\omega}&= \int_{0}^{\infty}x\brak{t} e^{-j \omega t} \ dt\\
+   X\brak{-\omega}&= \int_{-\infty}^{0}x\brak{-t} e^{j \omega t} \ dt\\
+ &=\int_{0}^{\infty}x\brak{t} e^{j\omega t} \ dt\\
+ X\brak{\omega}+X\brak{-\omega}&= \int_{0}^{\infty}x\brak{t} e^{-j \omega t} \ dt+\int_{0}^{\infty}x\brak{t} e^{j \omega t} \ dt\\
+ &=2 \int_{0}^{\infty} x\brak{t} cos\brak{\omega t} \ dt
+\end{align}
+$\because$ Integral of a real number is real, Continuous time Fourier transform of $\brak{x\brak{t} + x\brak{-t}}$ is not Purely imaginary.\\
+2) $x\brak{t} - x\brak{-t}$
+\begin{align}
+   X\brak{\omega}&=\int_{-\infty}^{\infty}x\brak{t} e^{-j \omega t} \ dt\\
+   X\brak{\omega }&= \int_{0}^{\infty}x\brak{t} e^{-j\omega t} \ dt\\
+   X\brak{-\omega}&= \int_{-\infty}^{0}x\brak{-t} e^{j2 \pi ft} \ dt\\
+ &=\int_{0}^{\infty}x\brak{t} e^{j\omega t} \ dt\\
+ X\brak{\omega}-X\brak{-\omega}&= \int_{0}^{\infty}x\brak{t} e^{-j\omega t} \ dt-\int_{0}^{\infty}x\brak{t} e^{j \omega t} \ dt\\
+ &= -2 \int_{0}^{\infty}j x\brak{t} sin\brak{\omega t} \ dt
+\end{align}
+$\because$ Integral of a purely imaginary number is imaginary, Continuous time Fourier transform of $\brak{x\brak{t} - x\brak{-t}}$ is Purely imaginary.\\
+3)$j\brak{x\brak{t} + x\brak{-t}}$
+\begin{align}
+   X\brak{\omega}&=\int_{-\infty}^{\infty} j x\brak{t} e^{-j\omega t} \ dt\\
+   X\brak{\omega}&= \int_{0}^{\infty} j x\brak{t} e^{-j \omega t} \ dt\\
+   X\brak{-\omega}&= \int_{-\infty}^{0} j x\brak{-t} e^{j\omega t} \ dt\\
+ &=\int_{0}^{\infty} j x\brak{t} e^{j\omega t} \ dt\\
+ X\brak{\omega}+X\brak{-\omega}&= \int_{0}^{\infty} j x\brak{t} e^{-j\omega t} \ dt+\int_{0}^{\infty} j x\brak{t} e^{j\omega t} \ dt\\
+ &= 2 \int_{0}^{\infty} j x\brak{t} cos\brak{\omega t} \ dt
+\end{align}
+$\because$ Integral of a purely imaginary number is imaginary, Continuous time Fourier transform of $j\brak{x\brak{t} + x\brak{-t}}$ is Purely imaginary.\\
+4)$j\brak{x\brak{t} - x\brak{-t}}$
+\begin{align}
+   X\brak{\omega}&=\int_{-\infty}^{\infty} j x\brak{t} e^{-j\omega t} \ dt\\
+   X\brak{\omega }&= \int_{0}^{\infty} j x\brak{t} e^{-j\omega t} \ dt\\
+   X\brak{-\omega }&= \int_{-\infty}^{0} j x\brak{-t} e^{j\omega t} \ dt\\
+ &=\int_{0}^{\infty} j x\brak{t} e^{j\omega t} \ dt\\
+ X\brak{\omega }-X\brak{-\omega }&= \int_{0}^{\infty} j x\brak{t} e^{-j\omega t} \ dt-\int_{0}^{\infty} j x\brak{t} e^{j\omega t} \ dt\\
+ &= 2 \int_{0}^{\infty}  x\brak{t} sin\brak{2 \pi ft} \ dt
+\end{align}
+$\because$ Integral of a real number is real, Continuous time Fourier transform of $j\brak{x\brak{t} + x\brak{-t}}$ is not Purely imaginary.\\
+\end{document}
