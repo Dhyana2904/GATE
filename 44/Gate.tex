@@ -1,0 +1,130 @@
+%\iffalse
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+\usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+\title{\textbf{IN-2023}}
+\author{EE23BTECH11210-Dhyana Teja Machineni$^{*}$% <-this % stops a space
+}
+\maketitle
+\newpage
+\bigskip
+
+\textbf{QUESTION:}\\
+A continuous real-valued signal $x\brak{t}$ has finite positive energy and $x\brak{t} = 0$, $\forall$ $t < 0$. From the list given below, select ALL the signals whose
+continuous-time Fourier transform is purely imaginary.\\
+\begin{enumerate}
+\item$x\brak{t} + x\brak{-t}$
+\item$x\brak{t} - x\brak{-t}$
+\item$j\brak{x\brak{t} + x\brak{-t}}$
+\item$j\brak{x\brak{t} - x\brak{-t}}$
+\end{enumerate}
+\hfill{(GATE IN 2023)}\\
+\solution\\
+\begin{table}[h]
+         \label{tab:table}
+         \input{tables/table.tex}
+         \caption{Variables and their descriptions}
+     \end{table}\\
+Fourier transform of an real and odd signal$x\brak{t}$ is purely imaginary.\\
+\begin{align}
+\mathcal{F}\{x(t)\} &= X\brak{f}\\
+X\brak{f}&=\int_{-\infty}^{\infty} x\brak{t} e^{-j 2\pi f t} \ dt\\
+X\brak{f}^*&=\int_{-\infty}^{\infty} x\brak{t} e^{j 2\pi f t} \ dt\\
+X\brak{f}^*&=\int_{-\infty}^{\infty} x\brak{-t} e^{-j 2\pi f t} \ dt\\
+X\brak{f}^*&=-X\brak{f}
+\end{align}
+ Fourier transform of an imaginary even signal $jx\brak{t}$ is purely imaginary.\\
+\begin{align}
+\mathcal{F}\{x(t)\} &= X\brak{f}\\
+X\brak{f}&=\int_{-\infty}^{\infty} jx\brak{t} e^{-j 2\pi f t} \ dt\\
+X\brak{f}^*&=-\int_{-\infty}^{\infty} jx\brak{t} e^{j 2\pi f t} \ dt\\
+X\brak{f}^*&=-\int_{-\infty}^{\infty} jx\brak{-t} e^{-j 2\pi f t} \ dt\\
+X\brak{f}^*&=-X\brak{f}
+\end{align}
+\begin{align} 
+x\brak{t} &= 
+\begin{cases} 
+0 & \text{for } t < 0 \\
+t & \text{for } t \geq 0 
+\end{cases}\\
+x\brak{n}&=t u\brak{n}
+\end{align}
+1)$x\brak{t} + x\brak{-t}$
+\begin{align}
+  f\brak{t}&= x\brak{t} + x\brak{-t}\\
+  f\brak{-t}&=f\brak{t}\\
+  f\brak{t} &= t u\brak{t}-t u\brak{-t}\\
+  \mathcal{F}\{f(t)\}&=\int_{-\infty}^{\infty} f\brak{t} e^{-j 2\pi f t} \ dt\\
+  F\brak{f}&=2\int_{0}^{\infty} t  cos\brak{2\pi ft}  \ dt
+\end{align}
+$\therefore$ Fourier Transform is not Purely imaginary.\\
+2) $x\brak{t} - x\brak{-t}$
+\begin{align}
+  f\brak{t}&= x\brak{t} - x\brak{-t}\\
+f\brak{t}&=-f\brak{-t}\\
+ f\brak{t} &= t u\brak{-t}+ t u\brak{t}\\
+  \mathcal{F}\{f(t)\}&=\int_{-\infty}^{\infty} f\brak{t} e^{-j 2\pi f t} \ dt\\
+  F\brak{f}&=2j\int_{0}^{\infty} t  sin\brak{2\pi ft}  \ dt
+\end{align}
+$\therefore$ Fourier Transform is purely imaginary.\\
+3)$j\brak{x\brak{t} + x\brak{-t}}$
+\begin{align}
+  f\brak{t}&= j\brak{x\brak{t} + x\brak{-t}}\\
+  f\brak{-t}&=f\brak{t}\\
+  f\brak{t} &= j\brak{t u\brak{t}-t u\brak{-t}}\\
+  \mathcal{F}\{f(t)\}&=\int_{-\infty}^{\infty} jt e^{-j 2\pi f t} \ dt\\
+  F\brak{f}&=2j\int_{0}^{\infty} t  cos\brak{2\pi ft}  \ dt
+\end{align}
+$\therefore$ Fourier Transform is Purely imaginary.\\
+4)$j\brak{x\brak{t} - x\brak{-t}}$
+\begin{align}
+  f\brak{t}=j\brak{x\brak{t} - x\brak{-t}}\\
+f\brak{t}&=-f\brak{-t}\\
+f\brak{t}&=j\brak{t u\brak{-t}+ t u\brak{t}}\\
+  \mathcal{F}\{f(t)\}&=\int_{-\infty}^{\infty} f\brak{t} e^{-j 2\pi f t} \ dt\\
+  F\brak{f}&=-2\int_{0}^{\infty} t  sin\brak{2\pi ft}  \ dt
+\end{align}
+$\therefore$ Fourier Transform is not Purely imaginary.\\
+\end{document}
